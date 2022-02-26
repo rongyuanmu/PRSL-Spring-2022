@@ -3,6 +3,7 @@
  Pattern Recognition and Statical Learning
  
  Folder named Week X is for storing the raw data
+ 
  XX_Name.py: XX stands for week, Name stands for Experiment Title
  
  Rongyuan, Mu
