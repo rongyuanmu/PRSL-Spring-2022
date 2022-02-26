@@ -13,6 +13,7 @@ from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, r
 ```
 ### Read file in folder
 首先读取数据，并创建两个数组label、score进行存放。
+![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week%201/Output/RawData.png)
 ```
 with open('score.csv', newline='') as f:
     reader = csv.reader(f)
