@@ -1,11 +1,7 @@
 # PRSL Spring2022
-
- Pattern Recognition and Statical Learning
- 
- Folder named Week X is for storing the raw data
- 
- XX_Name.py: XX stands for week, Name stands for Experiment Title
- 
- Rongyuan, Mu
- Major in Intelligent Science and Technology
- Department of Automation, School for Information Science and Technology, East China University of Science and Technology
+Welcome to learn Pattern Recognition and Statical Learning with me in Spring 2022. <br>
+`Plagiarism` of any kind is `prohibited` in this repository.
+# Author Info
+Mu Rongyuan<br>
+E-mail: 19002032@mail.ecust.edu.cn<br>
+Affiliation: Department of Automation, CISE, ECUST, PRC
