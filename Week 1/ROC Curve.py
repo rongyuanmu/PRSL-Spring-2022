@@ -5,13 +5,13 @@ from sklearn import metrics
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score, ConfusionMatrixDisplay, auc
 
 #Read file
-with open('Week 1/score.csv', newline='') as f:
+with open('score.csv', newline='') as f:
     reader = csv.reader(f)
     s = list(reader)
 tmp = s[0]
 score = np.array([float(item) for item in tmp])
 
-with open('Week 1/label.csv', newline='') as f:
+with open('label.csv', newline='') as f:
     reader = csv.reader(f)
     l = list(reader)
 tmp = l[0]
