@@ -13,7 +13,7 @@ from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, r
 ```
 ### Read file in folder
 首先读取数据，并创建两个数组label、score进行存放。
-![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week%201/Output/RawData.png)
+![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week1%20Confusion%20Matrix%20and%20ROC%20Curve/Output/RawData.png)
 ```
 with open('score.csv', newline='') as f:
     reader = csv.reader(f)
@@ -54,7 +54,7 @@ print('TruePositiveRate: ', tpr)
 fpr = cm[0][1]/(cm[0][1]+cm[1][0])
 print('FalsePositiveRate: ', fpr)
 ```
-![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week%201/Output/Data.png)
+![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week1%20Confusion%20Matrix%20and%20ROC%20Curve/Output/Data.png)
 ### Plot
 首先画出混淆矩阵。
 ```
@@ -62,7 +62,7 @@ disp = ConfusionMatrixDisplay(cm)
 disp.plot()
 plt.show()
 ```
-![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week%201/Output/Confusion%20Matrix.png)
+![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week1%20Confusion%20Matrix%20and%20ROC%20Curve/Output/Confusion%20Matrix.png)
 <br>
 再画出ROC曲线与0.5曲线的对比图。
 ```
@@ -84,4 +84,4 @@ plt.title("Receiver Operating Characteristic")
 plt.legend(loc="lower right")
 plt.show()
 ```
-![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week%201/Output/ROC%20Curve.png)
+![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week1%20Confusion%20Matrix%20and%20ROC%20Curve/Output/ROC%20Curve.png)
