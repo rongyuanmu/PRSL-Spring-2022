@@ -1,8 +1,9 @@
 # 问题：
-对sklearn.datasets数据进行线性回归并做预测（用diabetes.data回归diabetes.target）
+对sklearn.datasets.diabetes数据进行线性回归并做预测（用diabetes.data回归diabetes.target）
 1. 对diabetes进行随机划分，留33%做测试
 2. 构造回归模型
-3. 进行预测，输出预测的均方根误差RMSE=$\sqrt{\frac N $\sum_{i=1}^N$ ($y_i$ - )}$
+3. 进行预测，输出预测的均方根误差RMSE=
+![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week3%20Least%20Square%20Method/Ouput/RMSE%20Equation.png)
 # 解答：
 ### Import Packages
 导包。
@@ -21,7 +22,7 @@ y = diabetes.target
 # Get parameters of dataset
 data_num, feature_num = data.shape
 ```
-# Feature Scaling
+### Feature Scaling
 对数据进行处理，本次实验采用Mean Normalization。
 ```
 mean = np.zeros(feature_num)
@@ -32,7 +33,7 @@ for i in range(feature_num):
     for j in range(data_num):
         data[j][i] = (data[j][i] - mean[i]) / ptp[i]
 ```
-# Extend X0 = 1 Column
+### Extend X0 = 1 Column
 在data数组左侧加入一列向量，使X0=1。
 ```
 X = np.ones([data_num, feature_num + 1])
