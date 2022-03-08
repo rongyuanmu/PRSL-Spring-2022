@@ -1,24 +1,21 @@
 import numpy as np
-from sklearn import model_selection
+from sklearn import model_selection, datasets
 import scipy.stats as st
 
-# import dataset manually
-# Gender(0 for female, 1 for male) height(feet) weight(lbs) footsize(inches)
-dataset = [
-    [1, 6, 180, 12],
-    [1, 5.92, 190, 11],
-    [1, 5.58, 170, 12],
-    [1, 5.92, 165, 10],
-    [0, 5, 100, 6],
-    [0, 5.5, 150, 8],
-    [0, 5.42, 130, 7],
-    [0, 5.75, 150, 9]
-]
-dataset = np.array(dataset)
-
+# import dataset_iris from sklearn-datasets
+iris = datasets.load_iris()
+X = iris.data
+y = iris.target
+a, b = X.shape
+dataset = np.zeros([a, b+1])
+for i in range(a):
+    dataset[i][0] = y[i]
+    for j in range(b+1):
+        if j != 0:
+            dataset[i][j] = X[i][j-1]
 # K-Fold
 np.random.shuffle(dataset)
-kf = model_selection.KFold(n_splits=3, shuffle=False)
+kf = model_selection.KFold(n_splits=5, shuffle=True)
 for train_idx, test_idx in kf.split(dataset):
     data_train = dataset[train_idx]
     data_test = dataset[test_idx]
@@ -88,19 +85,3 @@ estmation = BayesClassification(score, prior, mean, std, label_num)
 right_num = estmation == label
 rigth_rate = np.sum(right_num) / test_num
 print('The accuracy is {:.2%}.'.format(rigth_rate))
-
-# Estimator for user
-print("How many person you want to estimate?")
-person = int(input())
-data_user = np.zeros([person, fea_num])
-print('Personal Data (feet weight footsize) and new line for another:')
-for i in range(person):
-    data_user[i] = input().split(" ")
-result_user = BayesClassification(data_user, prior, mean, std, label_num)
-for i in range(person):
-    print('A person whose height is %.2f feet, weight is %.2f lbs, foot size is %.2f inches is inferred to be a'%(data_user[i][0], data_user[i][1], data_user[i][2]), end=" ")
-    if result_user[i] == 0:
-        print('female')
-    else:
-        print('male')
-print(result_user)
