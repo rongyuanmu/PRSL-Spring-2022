@@ -1,116 +1,85 @@
 # 问题：
-对sklearn.datasets.diabetes数据进行线性回归并做预测（用diabetes.data回归diabetes.target）
-1. 对diabetes进行随机划分，留33%做测试
-2. 构造回归模型
-3. 进行预测，输出预测的均方根误差RMSE=
-![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week3%20Least%20Square%20Method/Ouput/RMSE%20Equation.png)
+对sklearn.datasets.iris数据进行线型感知机分类
+1. 使用前两类花setosa(50), versicolour(50)中Sepal Length, Sepal Length；
+2. 构造模型；
+3. 画图。
 # 解答：
 ### Import Packages
 导包。
 ```
 import numpy as np
+from sklearn import datasets
 import matplotlib.pyplot as plt
-from sklearn import datasets, model_selection
 ```
 ### Load datasets from sklearn
 从包内获取数据集及其参数。
 ```
-# Load Datasets
-diabetes = datasets.load_diabetes()
-data = diabetes.data
-y = diabetes.target
-# Get parameters of dataset
-data_num, feature_num = data.shape
+iris = datasets.load_iris()
+# Iris: setosa(50), versicolour(50)
+X = iris.data[0:100]
+X = X[:, [0,1]]
+print(X.shape)
+y = iris.target.reshape(-1, 1)[0:100]
+X = np.c_[np.ones(len(X)), X]
 ```
-### Feature Scaling
-对数据进行处理，本次实验采用Mean Normalization。
+### Perceptron Function
 ```
-mean = np.zeros(feature_num)
-mean = np.average(data, axis=0)
-ptp = np.zeros(feature_num)
-ptp = np.ptp(data, axis=0)
-for i in range(feature_num):
-    for j in range(data_num):
-        data[j][i] = (data[j][i] - mean[i]) / ptp[i]
-```
-### Extend X0 = 1 Column
-在data数组左侧加入一列向量，使X0=1。
-```
-X = np.ones([data_num, feature_num + 1])
-for i in range(data_num):
-    for j in range(feature_num):
-        X[i][j + 1] = data[i][j]
-```
-### Function1: K-Fold
-使用K折交叉验证对数据集进行随机划分。
-```
-def kfold(data, target):
-    kf = model_selection.KFold(n_splits=8, shuffle=True)
-    for train_idx, test_idx in kf.split(data, target):
-        data_train = data[train_idx]
-        target_train = target[train_idx]
-        data_test = data[test_idx]
-        target_test = target[test_idx]
-    return data_train, target_train, data_test, target_test
-```
-### Function2: Least Square Algorithm
-采用迭代法和直接法。
-```
-def LeastSquare(data, target):
-    # Iteration Method
+def perceptron(data, target):
     row, col = data.shape
-    target = np.transpose(np.array([target]))
-    # Initial Learning rate, Threshold, Iteration
-    alpha = 0.001
-    threshold = 0.01
-    iteration = 1000
-    # Initial Beta
-    beta = np.random.rand(col, 1)
-    # negative-delta = X^T · Y - X^T * X * beta
-    delta = np.dot(np.transpose(data), target) - np.dot(np.dot(np.transpose(data), data), beta)
-    beta_new = beta + alpha * delta
-    loss = np.zeros(iteration)
-    for i in range(iteration):
-        loss[i] = np.linalg.norm(target - np.dot(data, beta_new))
-        if loss[i] < threshold:
-            break
-        else:
-            beta = beta_new
-            delta = np.dot(np.transpose(data), target) - np.dot(np.dot(np.transpose(data), data), beta)
-            beta_new = beta + alpha * delta
-    plt.plot(loss)
-    plt.show()
-
-    # Normal Equation: beta = (X^T · X)^(-1) · (X^T · Y)
-    #beta = np.dot(np.linalg.inv(np.dot(np.transpose(data), data)), np.dot(np.transpose(data), target))
-
-    return beta
+    sign = target * 2 - 1
+    # Initial w
+    w = 0.01 * np.random.rand(col, 1)
+    # First Calculate
+    result = np.dot(data, w)
+    pred = 1 * (result > 0)
+    # Define Super Parameters
+    eta = 0.01
+    iteration = 0
+    error = []
+    # Iteration
+    while np.sum(pred != target) and iteration < 5000:
+        # Find Wrong Classification
+        flag = np.array((pred != target)).reshape(-1)
+        X_error = X[flag, :]
+        y_error = sign[flag, :]
+        # Derivative of w
+        delta_w = np.dot(X_error.T, y_error)
+        w_new = w + eta * delta_w
+        # Error formula
+        error.append((- 1 / np.linalg.norm(w)) * (np.dot((np.dot(X_error, w)).T, y_error)))
+        # Prepare for next iteration
+        iteration = iteration + 1
+        pred = []
+        w = w_new
+        result = np.dot(data, w)
+        pred = 1 * (result > 0)
+    print(iteration)
+    return w, error
 ```
-使用直接法画出Loss函数图像：<br>
-![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week3%20Least%20Square%20Method/Ouput/Loss.png)
-### Function3: Validation
-对验证集数据进行验证，并算出RMSE（均方根误差）。
+### Call function
 ```
-def Validation(data, target, beta):
-    a, b = data.shape
-    # Cover beta to column vector
-    theta = np.transpose(np.array([beta]))
-    # Calculate Y Hat
-    Y_hat = np.dot(data, theta)
-    # RMSE = Sqrt(1/N * Sigma[(yi - yi_hat)^2])
-    temp = 0
-    for i in range(a):
-        temp = temp + (Y_hat[i] - target[i]) ** 2
-    RMSE = np.sqrt(temp / a)
-    return RMSE
+# Call function
+w, error = perceptron(X, y)
+error = np.array(error).reshape(-1)
 ```
-### 调用函数
+### Plot
+1. Plot Error Img
 ```
-data_train, target_train, data_test, target_test = kfold(X, y)
-beta = LeastSquare(data_train, target_train)
-RMSE = Validation(data_test, target_test, beta)
-print('RMSE of this estimation: %f' %float(RMSE))
+plt.plot(error)
+plt.show()
 ```
-进行了K折随机交叉验证，每次分配的训练集和验证集内容不同，导致每次准确率的不同。
+![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week3%20Perceptron/Ouput/Error%20Img.png)
 <br>
-![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week3%20Least%20Square%20Method/Ouput/RMSE.png)
+2. Plot Data distribution and Decision boundary
+```
+x = np.arange(4, 8)
+y = -w[0] / w[2] - w[1] / w[2] * x
+plt.plot(x, y)
+plt.scatter(X[0:50, 1], X[0:50, 2], color='red', marker='o', label='setosa')
+plt.scatter(X[50:100, 1], X[50:100, 2], color='blue', marker='x', label='versicolour')
+plt.xlabel('Sepal Length')
+plt.ylabel('Sepal Width')
+plt.legend()
+plt.show()
+```
+![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week3%20Perceptron/Ouput/Decision%20Boundary.png)
