@@ -3,7 +3,10 @@
 1. 对diabetes进行随机划分，留33%做测试
 2. 构造回归模型
 3. 进行预测，输出预测的均方根误差RMSE=
-![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week3%20Least%20Square%20Method/Ouput/RMSE%20Equation.png)
+<div align=center>
+<img src="https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week3%20Least%20Square%20Method/Ouput/RMSE%20Equation%20copy.png" width=15%>
+</div>
+
 # 解答：
 ### Import Packages
 导包。
