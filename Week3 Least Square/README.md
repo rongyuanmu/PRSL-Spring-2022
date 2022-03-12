@@ -4,7 +4,7 @@
 2. 构造回归模型
 3. 进行预测，输出预测的均方根误差RMSE=
 <div align=center>
-<img src="https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week3%20Least%20Square%20Method/Ouput/RMSE%20Equation%20copy.png" width=15%>
+<img src="https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week3%20Least%20Square/Ouput/RMSE%20Equation%20copy.png" width=15%>
 </div>
 
 # 解答：
@@ -90,7 +90,7 @@ def LeastSquare(data, target):
     return beta
 ```
 使用直接法画出Loss函数图像：<br>
-![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week3%20Least%20Square%20Method/Ouput/Loss.png)
+![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week3%20Least%20Square/Ouput/Loss.png)
 ### Function3: Validation
 对验证集数据进行验证，并算出RMSE（均方根误差）。
 ```
@@ -116,4 +116,4 @@ print('RMSE of this estimation: %f' %float(RMSE))
 ```
 进行了K折随机交叉验证，每次分配的训练集和验证集内容不同，导致每次准确率的不同。
 <br>
-![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week3%20Least%20Square%20Method/Ouput/RMSE.png)
+![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week3%20Least%20Square/Ouput/RMSE.png)
