@@ -42,7 +42,8 @@ def LogisticRegression(data, target):
     for i in range(iteration):
         cost_tmp = 0
         for j in range(data_num):
-            cost_tmp = cost_tmp - target[j] * np.log(Sigmoid(np.dot(data[j], theta))) - (1 - target[j]) * np.log(1 - Sigmoid(np.dot(data[j], theta)))
+            cost_tmp = cost_tmp - target[j] * np.log(Sigmoid(np.dot(data[j], theta))) - (1 - target[j]) * np.log(
+                1 - Sigmoid(np.dot(data[j], theta)))
         cost[i] = cost_tmp / data_num
         if cost[i] < threshold:
             break
@@ -68,6 +69,7 @@ def Validation(data, target, theta):
     correct = np.sum(p == target)
     accuracy = correct / len(data)
     return accuracy
+
 
 # Call functions
 data_train, target_train, data_test, target_test = kfold(X, y)
