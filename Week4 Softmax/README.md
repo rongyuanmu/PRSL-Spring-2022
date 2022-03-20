@@ -95,7 +95,7 @@ def SoftmaxFit(data, target, label):
     plt.show()
     return weight
 ```
-![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week4%20Softmax/Ouput/Soft%20Loss.png)
+![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week4%20Softmax/Output/Softmax%20Loss.png)
 ### Function6: Validation
 对data_test数据进行验证（如果软概率中最大值与target-onehot对应则分类正确），返回Accuracy。
 ```
@@ -127,4 +127,4 @@ weight = SoftmaxFit(data_train, target_train, target)
 accuracy = Validation(weight, data_test, target_test)
 print('Accuracy: {:.2%}.' .format(accuracy))
 ```
-![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week4%20Softmax/Ouput/Accuracy.png)
+![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week4%20Softmax/Output/Accuracy.png)
