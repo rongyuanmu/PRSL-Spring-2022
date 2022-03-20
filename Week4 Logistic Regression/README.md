@@ -66,7 +66,7 @@ def LogisticRegression(data, target):
     plt.show()
     return theta
 ```
-![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week4%20Logistic%20Regression/Ouput/Cost%20Img.png)
+![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week4%20Logistic%20Regression/Output/Cost%20Img.png)
 
 ### Validation
 ```
@@ -90,4 +90,4 @@ theta = LogisticRegression(data_train, target_train)
 accuracy = Validation(data_test, target_test, theta)
 print('The accuracy is {:.2%}.'.format(accuracy))
 ```
-![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week4%20Logistic%20Regression/Ouput/Accuracy.png)
+![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week4%20Logistic%20Regression/Output/Accuracy.png)
