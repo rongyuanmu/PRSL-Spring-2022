@@ -2,9 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c4a118a-a50d-4f62-ad42-812d2a7ac0e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Naive Bayes_iris.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cases/Titanic/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cases/Titanic/.idea/Titanic.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cases/Titanic/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cases/Titanic/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cases/Titanic/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cases/Titanic/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cases/Titanic/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cases/Titanic/Titanic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cases/Titanic/Titanic_OneHot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Week5 Decision Tree/.idea/Week5 Decision Tree.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Week5 K-Nearest Neighbor/KNN for Iris.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Week5 K-Nearest Neighbor/KNN for fashionmnist.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Week9 Singular Value Decomposition/Xuhui Campus.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Naive Bayes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Naive Bayes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Week4 Softmax/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/../Week4 Softmax/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Week4 Softmax/Softmax for Iris.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Week4 Softmax/Softmax for Iris.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Week5 K-Nearest Neighbor/main.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +84,7 @@
       <workItem from="1646707238788" duration="16000" />
       <workItem from="1646707613408" duration="54000" />
       <workItem from="1646714097536" duration="610000" />
+      <workItem from="1650590155222" duration="780000" />
     </task>
     <servers />
   </component>

@@ -49,8 +49,8 @@ def SoftLoss(weight, data, target):
 # Softmax Algorithm
 def SoftmaxFit(data, target, label):
     # Define Super Parameter
-    eta = 0.01
-    threshold = 0.001
+    eta = 0.0001
+    threshold = 0.00001
     iteration = 8000
     cost = np.zeros(0)
     # Random initialization (3 * 5)

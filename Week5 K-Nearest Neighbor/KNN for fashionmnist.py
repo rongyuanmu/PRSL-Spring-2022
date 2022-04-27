@@ -1,5 +1,8 @@
+import time
 import numpy as np
 from sklearn import model_selection
+
+time_start = time.time()
 
 
 def FileReader(address):
@@ -58,6 +61,8 @@ def Validation(predict, target):
 fashion_data = FileReader(f"fashion-mnist_test.csv")
 data, target, data_plt, label = PreProcess(fashion_data)
 data_train, target_train, data_test, target_test = kfold(data, target)
-predict = KNN(data_train, target_train, data_test, 6.8, 1, label)
+predict = KNN(data_train, target_train, data_test, 7, 1, label)
 accuracy = Validation(predict, target_test)
-print(accuracy)
+time_end = time.time()
+print('Accuracy: {:.2f}' .format(accuracy))
+print('Time: ', time_end - time_start, 's')
