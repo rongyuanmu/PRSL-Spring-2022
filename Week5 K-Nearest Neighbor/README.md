@@ -87,4 +87,4 @@ predict = KNN(data_train, target_train, data_test, 6.8, 1, label)
 accuracy = Validation(predict, target_test)
 print(accuracy)
 ```
-![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week5%20K-Nearest%20Neighbor/Ouput/KNN%20Accuracy.png)
+![image](https://github.com/rongyuanmu/PRSL-Spring-2022/blob/main/Week5%20K-Nearest%20Neighbor/Output/KNN%20Accuracy.png)
