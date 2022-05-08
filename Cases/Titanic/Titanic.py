@@ -10,7 +10,12 @@ from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.naive_bayes import BernoulliNB
 from sklearn.svm import LinearSVC
 from sklearn.neighbors import KNeighborsClassifier
-
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
+from sklearn.decomposition import KernelPCA
+from sklearn.utils.fixes import loguniform
+from sklearn.model_selection import RandomizedSearchCV
 import warnings
 warnings.filterwarnings('ignore') #无视所有代码警告
 
@@ -167,3 +172,24 @@ knn = KNeighborsClassifier()
 knn.fit(data_train, train_target)
 acc_knn = knn.score(data_test, target_test) * 100
 print("K Nearest Neighbor: %s%%" % acc_knn)
+# 7. KPCA
+scaler = StandardScaler()
+X_train = scaler.fit_transform(data_train)
+X_test = scaler.transform(data_test)
+transformer = KernelPCA(n_components=7, kernel='rbf')
+X_re_train = transformer.fit_transform(X_train)
+X_re_test = transformer.transform(X_test)
+print(X_re_train.shape, X_re_test.shape)
+
+print("Fitting the classifier to the training set")
+param_grid = {
+    "C": loguniform(1e3, 1e5),
+    "gamma": loguniform(1e-4, 1e-1),
+}
+clf = RandomizedSearchCV(
+    SVC(kernel="rbf", class_weight="balanced"), param_grid, n_iter=10)
+clf = clf.fit(X_re_train, train_target)
+print("Best estimator found by grid search:")
+print(clf.best_estimator_)
+acc = clf.score(X_re_test, target_test)
+print("The Classification Accuracy is %.2f%%." %(acc*100))

@@ -6,6 +6,7 @@ import re
 from sklearn import model_selection, decomposition
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
+from sklearn.
 import warnings
 warnings.filterwarnings('ignore') #无视所有代码警告
 
@@ -154,4 +155,3 @@ print(res)
 # rf_classifier(train_data, train_target, test, ['Sex', 'Title', 'TicketGroup', 'Pclass', 'Deck'])
 # rf_classifier(train_data, train_target, test, ['Title', 'Sex', 'Deck', 'TicketGroup', 'Pclass', 'FamilyScale', 'Fare'])
 rf_classifier(train_data, train_target, test, ['Pclass', 'Sex', 'Age', 'Fare', 'Title', 'Deck', 'FamilyScale'])
-
